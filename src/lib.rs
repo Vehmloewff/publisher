@@ -5,6 +5,8 @@ pub struct Publisher<T> {
     cell: UnsafeCell<Vec<T>>,
 }
 
+unsafe impl<T: Sync> Sync for Publisher<T> {}
+
 impl<T> Publisher<T> {
     pub fn new() -> Publisher<T> {
         Publisher {
